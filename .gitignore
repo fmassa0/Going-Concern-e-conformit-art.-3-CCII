@@ -1,0 +1,11 @@
+node_modules
+dist
+dist-ssr
+*.local
+.vite
+.DS_Store
+# working/reference artifacts (kept out of the repo)
+_raw_*.html
+_reference_original.html
+_cellmap.json
+_celllabels.json
