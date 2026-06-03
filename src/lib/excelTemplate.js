@@ -27,7 +27,7 @@ const DISCLAIMER = [
 
 function styleHeader(ws, row, cells) {
   cells.forEach((c) => {
-    const cell = ws.getCell(row + c.col)
+    const cell = ws.getCell(c.col + row)
     cell.value = c.v
     cell.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 11 }
     cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF' + INK } }
