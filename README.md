@@ -17,10 +17,18 @@ Nessun backend: gira interamente nel browser.
 
 ```bash
 npm install
-npm run dev      # http://localhost:5175
-npm run build    # build di produzione in dist/
-npm run preview  # anteprima del build
+npm run dev          # http://localhost:5175
+npm run build        # build di produzione in dist/
+npm run build:single # versione single-page (tutto inline) in dist-single/
+npm run preview      # anteprima del build
 ```
+
+### Versione single-page (standalone)
+
+Nel repo è incluso **`Cruscotto-Continuita-Ingenia.standalone.html`**: un unico file HTML
+con JS, CSS, Chart.js ed ExcelJS **tutti inline**. Si apre con doppio click in qualsiasi
+browser, senza build né server (i font sono un miglioramento progressivo con fallback di
+sistema). Si rigenera con `npm run build:single`.
 
 ## Come funziona (dati dinamici)
 

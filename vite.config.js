@@ -1,11 +1,17 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import { viteSingleFile } from 'vite-plugin-singlefile'
 
-// Base relative so the build can be opened/served from any sub-path.
+// SINGLE=1 → build single-page: tutto (JS, CSS, Chart.js, ExcelJS) inline in un
+// unico index.html apribile da file:// senza server. Altrimenti build normale.
+const single = process.env.SINGLE === '1'
+
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), ...(single ? [viteSingleFile()] : [])],
   base: './',
   server: { port: 5175, open: true },
-  // exceljs è caricato on-demand in un chunk separato: il limite alza solo il warning.
-  build: { chunkSizeWarningLimit: 1100 },
+  build: {
+    chunkSizeWarningLimit: 1100,
+    ...(single ? { outDir: 'dist-single' } : {}),
+  },
 })
